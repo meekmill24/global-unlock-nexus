@@ -1,9 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -59,9 +62,18 @@ const Header = () => {
             </button>
           </div>
 
-          <Button variant="glow" size="sm" onClick={() => scrollToSection('credits')}>
-            Buy Credits
-          </Button>
+          {user ? (
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-muted-foreground hidden md:inline">{user.email}</span>
+              <Button variant="glass" size="sm" onClick={signOut}>
+                Sign Out
+              </Button>
+            </div>
+          ) : (
+            <Button variant="glow" size="sm" onClick={() => navigate('/auth')}>
+              Sign In
+            </Button>
+          )}
         </nav>
       </div>
     </header>
