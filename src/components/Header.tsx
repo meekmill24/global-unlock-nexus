@@ -62,6 +62,9 @@ const Header = () => {
           <div className="flex items-center gap-2">
             {user ? (
               <>
+                <Button variant="glass" size="sm" onClick={() => navigate('/orders')} className="hidden md:inline-flex">
+                  My Orders
+                </Button>
                 <span className="text-sm text-muted-foreground hidden md:inline">{user.email}</span>
                 <Button variant="glass" size="sm" onClick={signOut}>
                   Sign Out
@@ -100,6 +103,9 @@ const Header = () => {
             ))}
             {user ? (
               <div className="pt-2 border-t border-border space-y-2">
+                <Button variant="glow" size="sm" onClick={() => { navigate('/orders'); setMobileMenuOpen(false); }} className="w-full">
+                  My Orders
+                </Button>
                 <p className="text-sm text-muted-foreground">{user.email}</p>
                 <Button variant="glass" size="sm" onClick={() => { signOut(); setMobileMenuOpen(false); }} className="w-full">
                   Sign Out
