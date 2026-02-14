@@ -36,10 +36,10 @@ const Header = () => {
   ];
 
   const placeOrderItems = [
-    { icon: Smartphone, label: "IMEI Service", action: () => scrollToSection('services') },
-    { icon: Server, label: "Server Services", action: () => scrollToSection('services') },
-    { icon: Wifi, label: "Remote Service", action: () => scrollToSection('services') },
-    { icon: FileText, label: "File Services", action: () => scrollToSection('services') },
+    { icon: Smartphone, label: "IMEI Service", action: () => { navigate('/place-order/imei'); setMobileMenuOpen(false); } },
+    { icon: Server, label: "Server Services", action: () => { navigate('/place-order/server'); setMobileMenuOpen(false); } },
+    { icon: Wifi, label: "Remote Service", action: () => { navigate('/place-order/remote'); setMobileMenuOpen(false); } },
+    { icon: FileText, label: "File Services", action: () => { navigate('/place-order/file'); setMobileMenuOpen(false); } },
   ];
 
   const orderHistoryItems = [
@@ -50,10 +50,10 @@ const Header = () => {
   ];
 
   const accountItems = [
-    { icon: User, label: "My Profile", action: () => { navigate('/orders'); setMobileMenuOpen(false); } },
-    { icon: Plus, label: "Add Funds", action: () => scrollToSection('credits') },
+    { icon: User, label: "My Profile", action: () => { navigate('/dashboard'); setMobileMenuOpen(false); } },
+    { icon: Plus, label: "Add Funds", action: () => { navigate('/#credits'); setMobileMenuOpen(false); } },
     { icon: Mail, label: "My Mail", action: () => scrollToSection('contact') },
-    { icon: Gift, label: "Reward Points", action: () => scrollToSection('credits') },
+    { icon: Gift, label: "Reward Points", action: () => { navigate('/#credits'); setMobileMenuOpen(false); } },
     { icon: Settings, label: "Service Status", action: () => scrollToSection('services') },
   ];
 
@@ -107,10 +107,12 @@ const Header = () => {
           <div className="flex items-center gap-2">
             {user ? (
               <>
+                <Button variant="glass" size="sm" onClick={() => navigate('/dashboard')} className="hidden md:inline-flex">
+                  Dashboard
+                </Button>
                 <Button variant="glass" size="sm" onClick={() => navigate('/orders')} className="hidden md:inline-flex">
                   My Orders
                 </Button>
-                <span className="text-sm text-muted-foreground hidden md:inline">{user.email}</span>
                 <Button variant="glass" size="sm" onClick={signOut} className="hidden md:inline-flex">
                   Sign Out
                 </Button>
