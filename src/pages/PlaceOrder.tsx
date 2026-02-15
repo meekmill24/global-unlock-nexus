@@ -6,104 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
   ArrowLeft, Search, ChevronRight, Tag, Clock, Zap,
-  Smartphone, Server, Wifi, FileText, Filter
+  Filter
 } from "lucide-react";
-
-interface ServiceItem {
-  name: string;
-  group: string;
-  price: number;
-  delivery: string;
-  tag?: string;
-}
-
-const serviceData: Record<string, { title: string; icon: typeof Smartphone; services: ServiceItem[] }> = {
-  imei: {
-    title: "Place A New IMEI Order",
-    icon: Smartphone,
-    services: [
-      // OTIX Services
-      { name: "OTIX A12+ With Signal - iPhone 11", group: "OTIX A12+ With Signal", price: 24, delivery: "Instant", tag: "HOT" },
-      { name: "OTIX A12+ With Signal - iPhone 11 Pro", group: "OTIX A12+ With Signal", price: 28, delivery: "Instant" },
-      { name: "OTIX A12+ With Signal - iPhone 11 Pro Max", group: "OTIX A12+ With Signal", price: 32, delivery: "Instant" },
-      { name: "OTIX A12+ With Signal - iPhone 12", group: "OTIX A12+ With Signal", price: 36, delivery: "Instant" },
-      { name: "OTIX A12+ With Signal - iPhone 12 Pro", group: "OTIX A12+ With Signal", price: 40, delivery: "Instant" },
-      // USA T-Mobile
-      { name: "USA T-Mobile Premium iPhone Unlock", group: "USA Carrier Unlock", price: 35, delivery: "1-5 Days", tag: "LOW PRICE" },
-      { name: "USA T-Mobile / Sprint iPhone Unlock", group: "USA Carrier Unlock", price: 42, delivery: "1-3 Days" },
-      { name: "AT&T / Cricket iPhone Unlock – Clean", group: "USA Carrier Unlock", price: 28, delivery: "1-5 Days" },
-      { name: "Verizon iPhone Unlock Service", group: "USA Carrier Unlock", price: 30, delivery: "1-3 Days" },
-      // Samsung Unlock
-      { name: "Samsung Galaxy S24 Unlock – All Carriers", group: "Samsung Unlock", price: 22, delivery: "1-24 Hours" },
-      { name: "Samsung Galaxy S23 Unlock – Premium", group: "Samsung Unlock", price: 18, delivery: "1-24 Hours" },
-      { name: "Samsung Galaxy A Series Unlock", group: "Samsung Unlock", price: 12, delivery: "Instant", tag: "FAST" },
-      // iCloud
-      { name: "iCloud Remove – Clean – iPhone 8 to X", group: "iCloud Services", price: 55, delivery: "1-3 Days" },
-      { name: "iCloud Remove – Clean – iPhone 11 to 15", group: "iCloud Services", price: 75, delivery: "3-7 Days" },
-    ],
-  },
-  server: {
-    title: "Place A New Server Order",
-    icon: Server,
-    services: [
-      // TFM PRO TOOL
-      { name: "TFM Tool Pro 1 Year Activation", group: "TFM PRO TOOL", price: 26.775, delivery: "1-5 Minutes" },
-      { name: "TFM Tool Pro 2 Year Activation", group: "TFM PRO TOOL", price: 44.625, delivery: "1-5 Minutes" },
-      { name: "TFM Tool Pro 3 Months Activation", group: "TFM PRO TOOL", price: 18.375, delivery: "1-5 Minutes" },
-      { name: "TFM Tool Pro Credits", group: "TFM PRO TOOL", price: 6.55, delivery: "1-5 Minutes", tag: "New" },
-      // MiFrp Tool
-      { name: "MiFrp Tool 1 Year License", group: "MiFrp Tool", price: 15, delivery: "1-5 Minutes" },
-      { name: "MiFrp Tool 6 Months License", group: "MiFrp Tool", price: 10, delivery: "1-5 Minutes" },
-      // UnlockTool
-      { name: "UnlockTool 1 Year License", group: "UnlockTool", price: 45, delivery: "Instant", tag: "HOT" },
-      { name: "UnlockTool 6 Months License", group: "UnlockTool", price: 28, delivery: "Instant" },
-      { name: "UnlockTool 3 Months License", group: "UnlockTool", price: 18, delivery: "Instant" },
-      // Chimera Tool
-      { name: "Chimera Tool 1 Year License", group: "Chimera Tool", price: 55, delivery: "Instant" },
-      { name: "Chimera Tool Credits (Pack of 100)", group: "Chimera Tool", price: 42, delivery: "Instant" },
-      // Octoplus
-      { name: "Octoplus Server Credits (100 Pack)", group: "Octoplus", price: 38, delivery: "Instant" },
-      { name: "Octoplus Samsung 1 Year Activation", group: "Octoplus", price: 32, delivery: "1-5 Minutes" },
-    ],
-  },
-  remote: {
-    title: "Place A New Remote Order",
-    icon: Wifi,
-    services: [
-      // GSM Tools Rent
-      { name: "Android Multitool Rent (AMT) - 2 Hours", group: "GSM Tools Rent Service – Instant", price: 0.4, delivery: "Instant", tag: "New" },
-      { name: "MDM Fix Tool Rent [6 Hours]", group: "GSM Tools Rent Service – Instant", price: 1.4, delivery: "Instant", tag: "New" },
-      { name: "TFM Tool Rent [5 Hours]", group: "GSM Tools Rent Service – Instant", price: 0.8, delivery: "Instant", tag: "New" },
-      { name: "TSM Tool Rent [6 Hours]", group: "GSM Tools Rent Service – Instant", price: 1.0, delivery: "Instant", tag: "New" },
-      { name: "Unlock Tool Rent [6 Hours]", group: "GSM Tools Rent Service – Instant", price: 2.5, delivery: "Instant", tag: "New" },
-      // iRemoval Pro
-      { name: "iRemoval Pro Premium Hello Bypass – iPad", group: "iRemoval Pro", price: 18, delivery: "1-24 Hours" },
-      { name: "iRemoval Pro Premium Hello Bypass – iPhone", group: "iRemoval Pro", price: 25, delivery: "1-24 Hours" },
-      // Remote FRP
-      { name: "Samsung FRP Remote Service – All Models", group: "Remote FRP Services", price: 8, delivery: "30 Minutes" },
-      { name: "Xiaomi FRP Remote Service", group: "Remote FRP Services", price: 6, delivery: "30 Minutes" },
-    ],
-  },
-  file: {
-    title: "Place A New File Order",
-    icon: FileText,
-    services: [
-      // Nokia SL3 BruteForce
-      { name: "SL3 BRUTEFORCE FAST (1-24 HOURS)", group: "Nokia SL3 BruteForce Service", price: 5.5, delivery: "1-24 Hours" },
-      { name: "SL3 BRUTEFORCE - SLOW (1-72 HOURS)", group: "Nokia SL3 BruteForce Service", price: 4.5, delivery: "1-72 Hours" },
-      // Firmware Files
-      { name: "Samsung Firmware File – Any Model", group: "Firmware Files", price: 3, delivery: "Instant" },
-      { name: "Huawei Firmware File – Any Model", group: "Firmware Files", price: 4, delivery: "1-5 Minutes" },
-      { name: "Xiaomi Firmware File – Any Model", group: "Firmware Files", price: 3, delivery: "Instant" },
-      // Network Files
-      { name: "Samsung Network Unlock File", group: "Network Unlock Files", price: 8, delivery: "1-24 Hours" },
-      { name: "LG Network Unlock File", group: "Network Unlock Files", price: 6, delivery: "1-24 Hours" },
-      // Certificates
-      { name: "Samsung EFS/NVM Certificate Backup", group: "Certificates & Backup", price: 10, delivery: "1-3 Hours" },
-      { name: "QCN File Service – Qualcomm Devices", group: "Certificates & Backup", price: 12, delivery: "1-24 Hours" },
-    ],
-  },
-};
+import { serviceData } from "@/data/serviceData";
 
 const PlaceOrder = () => {
   const { type } = useParams<{ type: string }>();
@@ -111,7 +16,6 @@ const PlaceOrder = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [selectedGroup, setSelectedGroup] = useState("All Group");
-  const [discountedOnly, setDiscountedOnly] = useState(false);
 
   useEffect(() => {
     if (!loading && !user) {
@@ -143,7 +47,7 @@ const PlaceOrder = () => {
   }, [data, selectedGroup, search]);
 
   const grouped = useMemo(() => {
-    const map = new Map<string, ServiceItem[]>();
+    const map = new Map<string, typeof filtered>();
     filtered.forEach((item) => {
       if (!map.has(item.group)) map.set(item.group, []);
       map.get(item.group)!.push(item);
@@ -152,8 +56,6 @@ const PlaceOrder = () => {
   }, [filtered]);
 
   if (loading || !data) return null;
-
-  if (loading) return null;
 
   const IconComp = data.icon;
 
@@ -174,7 +76,6 @@ const PlaceOrder = () => {
 
         {/* Filters */}
         <div className="glass rounded-xl p-4 mb-6 space-y-3">
-          {/* Group select */}
           <div className="relative">
             <Filter size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
             <select
@@ -188,27 +89,19 @@ const PlaceOrder = () => {
             </select>
           </div>
 
-          {/* Search + Discounted */}
-          <div className="flex gap-3">
-            <div className="relative flex-1">
-              <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                placeholder="Search Service..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="pl-10 bg-secondary border-border"
-              />
-            </div>
-            <label className="flex items-center gap-2 text-sm text-muted-foreground cursor-pointer shrink-0">
-              <input
-                type="checkbox"
-                checked={discountedOnly}
-                onChange={(e) => setDiscountedOnly(e.target.checked)}
-                className="rounded border-border accent-primary"
-              />
-              Discounted
-            </label>
+          <div className="relative">
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              placeholder="Search Service..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="pl-10 bg-secondary border-border"
+            />
           </div>
+
+          <p className="text-xs text-muted-foreground">
+            Showing {filtered.length} of {data.services.length} services
+          </p>
         </div>
 
         {/* Service Listings */}
@@ -221,12 +114,9 @@ const PlaceOrder = () => {
           ) : (
             Array.from(grouped.entries()).map(([groupName, items]) => (
               <div key={groupName}>
-                {/* Group header */}
                 <h2 className="text-lg font-bold text-foreground mb-3 pb-2 border-b border-border">
                   {groupName}
                 </h2>
-
-                {/* Service items */}
                 <div className="divide-y divide-border">
                   {items.map((item, idx) => (
                     <button
@@ -240,16 +130,20 @@ const PlaceOrder = () => {
                             {item.name}
                           </span>
                           {item.tag && (
-                            <span className="bg-destructive/20 text-destructive text-[10px] font-bold px-1.5 py-0.5 rounded-full">
+                            <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
+                              item.tag === "HOT" ? "bg-destructive/20 text-destructive" :
+                              item.tag === "NEW" ? "bg-primary/20 text-primary" :
+                              item.tag === "FAST" ? "bg-emerald-500/20 text-emerald-400" :
+                              "bg-accent text-accent-foreground"
+                            }`}>
                               {item.tag}
                             </span>
                           )}
                         </div>
-                        <p className="text-xs text-muted-foreground mb-2">{item.group}</p>
                         <div className="flex items-center gap-2 flex-wrap">
                           <span className="inline-flex items-center gap-1 bg-primary/20 text-primary text-xs font-bold px-2 py-0.5 rounded">
                             <Tag size={10} />
-                            ${item.price.toFixed(item.price % 1 === 0 ? 0 : item.price < 1 ? 1 : 3)}USD - US Dollar
+                            ${item.price < 1 ? item.price.toFixed(3) : item.price.toFixed(2)} USD
                           </span>
                           <span className="inline-flex items-center gap-1 bg-secondary text-muted-foreground text-xs font-medium px-2 py-0.5 rounded">
                             {item.delivery === "Instant" ? <Zap size={10} /> : <Clock size={10} />}
