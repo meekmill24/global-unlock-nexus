@@ -54,7 +54,7 @@ const Dashboard = () => {
                 <span className="text-muted-foreground text-sm">USD - US Dollar</span>
               </div>
             </div>
-            <Button variant="hero" size="lg" onClick={() => navigate("/#credits")} className="shrink-0">
+            <Button variant="hero" size="lg" onClick={() => navigate("/buy-credits")} className="shrink-0">
               <ShoppingCart size={18} />
               Buy Credit
             </Button>

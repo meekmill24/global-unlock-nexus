@@ -53,6 +53,54 @@ export type Database = {
         }
         Relationships: []
       }
+      payment_requests: {
+        Row: {
+          admin_notes: string | null
+          amount: number
+          created_at: string
+          credit_amount: number
+          crypto_address: string | null
+          crypto_currency: string | null
+          currency: string
+          id: string
+          payment_method: string
+          payment_reference: string | null
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          admin_notes?: string | null
+          amount: number
+          created_at?: string
+          credit_amount: number
+          crypto_address?: string | null
+          crypto_currency?: string | null
+          currency?: string
+          id?: string
+          payment_method: string
+          payment_reference?: string | null
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          admin_notes?: string | null
+          amount?: number
+          created_at?: string
+          credit_amount?: number
+          crypto_address?: string | null
+          crypto_currency?: string | null
+          currency?: string
+          id?: string
+          payment_method?: string
+          payment_reference?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null

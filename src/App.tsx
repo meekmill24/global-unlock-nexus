@@ -9,6 +9,7 @@ import Auth from "./pages/Auth";
 import Orders from "./pages/Orders";
 import Dashboard from "./pages/Dashboard";
 import PlaceOrder from "./pages/PlaceOrder";
+import BuyCredits from "./pages/BuyCredits";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/place-order/:type" element={<PlaceOrder />} />
+            <Route path="/buy-credits" element={<BuyCredits />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
