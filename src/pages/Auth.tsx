@@ -19,7 +19,7 @@ const Auth = () => {
   const { session } = useAuth();
 
   useEffect(() => {
-    if (session) navigate("/");
+    if (session) navigate("/dashboard");
   }, [session, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -32,7 +32,7 @@ const Auth = () => {
         toast({ title: "Login failed", description: error.message, variant: "destructive" });
       } else {
         toast({ title: "Welcome back!" });
-        navigate("/");
+        navigate("/dashboard");
       }
     } else {
       const { error } = await supabase.auth.signUp({
