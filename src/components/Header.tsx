@@ -51,9 +51,9 @@ const Header = () => {
 
   const accountItems = [
     { icon: User, label: "My Profile", action: () => { navigate('/dashboard'); setMobileMenuOpen(false); } },
-    { icon: Plus, label: "Add Funds", action: () => { navigate('/#credits'); setMobileMenuOpen(false); } },
+    { icon: Plus, label: "Add Funds", action: () => { navigate('/buy-credits'); setMobileMenuOpen(false); } },
     { icon: Mail, label: "My Mail", action: () => scrollToSection('contact') },
-    { icon: Gift, label: "Reward Points", action: () => { navigate('/#credits'); setMobileMenuOpen(false); } },
+    { icon: Gift, label: "Reward Points", action: () => { navigate('/buy-credits'); setMobileMenuOpen(false); } },
     { icon: Settings, label: "Service Status", action: () => scrollToSection('services') },
   ];
 
@@ -157,7 +157,7 @@ const Header = () => {
           <div className="py-2 border-b border-border">
             <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground px-4 mb-2">Client Area</p>
             <button
-              onClick={() => scrollToSection('credits')}
+              onClick={() => { navigate('/buy-credits'); setMobileMenuOpen(false); }}
               className="w-full flex items-center justify-between px-4 py-3 text-foreground hover:bg-accent/10 transition-colors"
             >
               <span className="flex items-center gap-3">
