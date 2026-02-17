@@ -9,7 +9,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-[85vh] flex items-center justify-center relative overflow-hidden mt-20">
+    <section id="home" className="min-h-[85vh] flex items-center justify-center relative overflow-hidden mt-20 pt-8 sm:pt-0">
       <div className="absolute inset-0 z-0">
         <img 
           src={heroImage} 
