@@ -11,6 +11,7 @@ import Dashboard from "./pages/Dashboard";
 import PlaceOrder from "./pages/PlaceOrder";
 import BuyCredits from "./pages/BuyCredits";
 import NotFound from "./pages/NotFound";
+import Admin from "./pages/Admin";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/orders" element={<Orders />} />
             <Route path="/place-order/:type" element={<PlaceOrder />} />
             <Route path="/buy-credits" element={<BuyCredits />} />
+            <Route path="/admin" element={<Admin />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
