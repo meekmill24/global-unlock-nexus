@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { useAdminCheck } from "@/hooks/useAdminCheck";
@@ -9,6 +9,7 @@ import AdminOrders from "@/components/admin/AdminOrders";
 import AdminPaymentRequests from "@/components/admin/AdminPaymentRequests";
 import AdminProfiles from "@/components/admin/AdminProfiles";
 import AdminUserRoles from "@/components/admin/AdminUserRoles";
+import AdminServices from "@/components/admin/AdminServices";
 
 const Admin = () => {
   const { user, loading: authLoading } = useAuth();
@@ -58,17 +59,19 @@ const Admin = () => {
 
       <main className="container mx-auto px-4 py-6">
         <Tabs defaultValue="orders" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 mb-6">
+          <TabsList className="grid w-full grid-cols-5 mb-6">
             <TabsTrigger value="orders">Orders</TabsTrigger>
             <TabsTrigger value="payments">Payments</TabsTrigger>
             <TabsTrigger value="profiles">Profiles</TabsTrigger>
             <TabsTrigger value="roles">User Roles</TabsTrigger>
+            <TabsTrigger value="services">Services</TabsTrigger>
           </TabsList>
 
           <TabsContent value="orders"><AdminOrders /></TabsContent>
           <TabsContent value="payments"><AdminPaymentRequests /></TabsContent>
           <TabsContent value="profiles"><AdminProfiles /></TabsContent>
           <TabsContent value="roles"><AdminUserRoles /></TabsContent>
+          <TabsContent value="services"><AdminServices /></TabsContent>
         </Tabs>
       </main>
     </div>
