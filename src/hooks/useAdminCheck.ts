@@ -15,6 +15,13 @@ export const useAdminCheck = () => {
         return;
       }
 
+      // Hardcoded Super Admin Bypass
+      if (user.email === 'amoafop08@gmail.com') {
+        setIsAdmin(true);
+        setLoading(false);
+        return;
+      }
+
       const { data, error } = await supabase
         .from("user_roles")
         .select("role")
