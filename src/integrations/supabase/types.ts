@@ -128,6 +128,42 @@ export type Database = {
         }
         Relationships: []
       }
+      services: {
+        Row: {
+          category: string
+          created_at: string
+          delivery: string
+          group_name: string
+          id: string
+          is_active: boolean
+          name: string
+          price: number
+          tag: string | null
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          delivery?: string
+          group_name?: string
+          id?: string
+          is_active?: boolean
+          name: string
+          price?: number
+          tag?: string | null
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          delivery?: string
+          group_name?: string
+          id?: string
+          is_active?: boolean
+          name?: string
+          price?: number
+          tag?: string | null
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string
