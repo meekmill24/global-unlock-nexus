@@ -19,8 +19,10 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-				body: ['"Inter"', 'system-ui', 'sans-serif'],
+				display: ['"Libre Baskerville"', 'Georgia', 'serif'],
+				body: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+				sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+				serif: ['"Libre Baskerville"', 'Georgia', 'serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
