@@ -80,7 +80,23 @@ const PlaceOrder = () => {
   }, [type]);
 
   const data = serviceData[type || "imei"];
-  const services: ServiceOption[] = dbServices.length > 0 ? dbServices : (data?.services ?? []);
+  const staticServices: ServiceOption[] = data?.services ?? [];
+  const services: ServiceOption[] = useMemo(() => {
+    // Merge DB services with the static catalog, deduping by name.
+    // This keeps the full built-in service list visible even when the
+    // database only has a partial seed.
+    const seen = new Set<string>();
+    const merged: ServiceOption[] = [];
+    for (const s of dbServices) {
+      const key = s.name.toLowerCase();
+      if (!seen.has(key)) { seen.add(key); merged.push(s); }
+    }
+    for (const s of staticServices) {
+      const key = s.name.toLowerCase();
+      if (!seen.has(key)) { seen.add(key); merged.push(s); }
+    }
+    return merged;
+  }, [dbServices, staticServices]);
 
   const orderField = useMemo(() => {
     switch (type) {
